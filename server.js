@@ -26,7 +26,7 @@ const tricks = {
         'class': 'fundamental',
         'info': 'combines an ollie with a 180-degree turn, leading with your back. Take off going your normal stance and land switch.', 
         'tricksPrior': 'ollie, kickturn, backside 180',
-        'media': 'https://thumbs.gfycat.com/RemarkableWebbedFluke-mobile.mp4'
+        // 'media': 'https://thumbs.gfycat.com/RemarkableWebbedFluke-mobile.mp4'
     },
     'hardflip': {
         'name': 'hardflip',
