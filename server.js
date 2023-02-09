@@ -7,8 +7,6 @@ const MongoClient = require('mongodb').MongoClient
 
 const connectionString = "mongodb+srv://procxi:hOXwlFj9QXhO93ox@cluster0.qzekfaw.mongodb.net/?retryWrites=true&w=majority"
 
-// hOXwlFj9QXhO93ox
-
 //Middleware
 app.use(cors())
 app.use(express.json())
@@ -90,13 +88,11 @@ app.use(express.json())
 //     }
 // }
 
-
 MongoClient.connect(connectionString)
     .then(client => {
         console.log('Connected to Database')
         const db = client.db('skate-tricks-api')
         const infoCollection = db.collection('trick-info')
-        
 
     app.get('/', (request, response) => {
         response.sendFile(__dirname + '/index.html')
@@ -105,7 +101,9 @@ MongoClient.connect(connectionString)
     app.get('/api/:trickName', (request, response) => {
     const tricksName = request.params.trickName.toLowerCase()
 
-        infoCollection.find({name: tricksName}).toArray()
+  
+      infoCollection.find({name: tricksName}).toArray()
+        
         .then(results => {
             console.log(results)
             response.json(results[0])
@@ -120,63 +118,8 @@ MongoClient.connect(connectionString)
     })
 
 })
-.catch(error => console.errror(error))
+.catch(error => console.error(error))
 
 app.listen(process.env.PORT || PORT, () => {
     console.log('Server is running!')
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// MongoClient.connect(connectionString)
-//     .then(client => {
-//         console.log('Connected to Database')
-//         const db = client.db('skate-tricks-api')
-//         const infoCollection = db.collection('tricks-info')
-
-//         app.get('/', (request, response) => {
-//             response.sendFile(__dirname + '/index.html')
-//         })
-        
-//         app.get('/api/:trickName', (request, response) => {
-//             //lower case query parameter that is inserted for searching...
-//             const tricksName = request.params.trickName.toLowerCase()
-
-//             infoCollection.find({name: tricksName}).toArray()
-//             .then(results => {
-//                 console.log(results)
-//                 response.json(results[0])
-//             })
-//             .catch(error => console.error(error))
-//         })
-
-//     })
-//     .catch(error => console.error(error))
-
-// app.listen(process.env.PORT || PORT, () => {
-//     console.log(`The server is now running on port ${PORT}!`)
-// })
