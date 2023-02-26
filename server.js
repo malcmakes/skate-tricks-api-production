@@ -35,6 +35,11 @@ MongoClient.connect(connectionString)
 })
 .catch(error => console.error(error))
 
-app.listen(process.env.PORT || PORT, () => {
-    console.log(`Server is running!`)
-})
+// app.listen(process.env.PORT || PORT, () => {
+//     console.log(`Server is running!`)
+// })
+
+app.listen(process.env.PORT || 8787, () => {
+    console.log('Server is running.')
+  })
+  
