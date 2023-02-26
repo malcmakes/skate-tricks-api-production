@@ -11,8 +11,6 @@ const connectionString = process.env.DB_STRING
 app.use(cors())
 app.use(express.json())
 
-
-function callMongo () {
     MongoClient.connect(connectionString)
     .then(client => {
         console.log('Connected to Database')
@@ -36,9 +34,6 @@ function callMongo () {
     })
 })
 .catch(error => console.error(error))
-}
-
-callMongo()
 
 // app.listen(process.env.PORT || PORT, () => {
 //     console.log(`Server is running!`)
@@ -47,4 +42,3 @@ callMongo()
 app.listen(process.env.PORT || 8787, () => {
     console.log('Server is running.')
   })
-  
