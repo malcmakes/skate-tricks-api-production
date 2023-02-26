@@ -11,7 +11,9 @@ const connectionString = process.env.DB_STRING
 app.use(cors())
 app.use(express.json())
 
-MongoClient.connect(connectionString)
+
+function callMongo () {
+    MongoClient.connect(connectionString)
     .then(client => {
         console.log('Connected to Database')
         const db = client.db('skate-tricks-api')
@@ -34,6 +36,9 @@ MongoClient.connect(connectionString)
     })
 })
 .catch(error => console.error(error))
+}
+
+callMongo()
 
 // app.listen(process.env.PORT || PORT, () => {
 //     console.log(`Server is running!`)
